@@ -1,2 +1,42 @@
-https://share.google/hXgIhso8QPIaRLxye
-Image placeholder for missing person. Replace this file with the image from the provided URL: https://share.google/hXgIhso8QPIaRLxye
+# Missing Person Image
+
+**IMPORTANT:** Replace this placeholder file with the actual photo of Kaidence Kollier.
+
+## Provided Image URL
+The user provided this URL: https://share.google/hXgIhso8QPIaRLxye
+
+**Note:** This URL appears to be incomplete or malformed. Please:
+1. Verify the correct Google Drive/Photos share link
+2. Download the image from the corrected link
+3. Replace this file with the actual image
+
+## Image Requirements
+- **Format:** JPG, PNG, or WebP
+- **Recommended Size:** At least 800x1000 pixels (portrait orientation)
+- **File Size:** Keep under 2MB for fast loading
+- **Quality:** Clear, high-resolution photo for identification
+
+## How to Add the Image
+
+### Option 1: Manual Upload
+1. Download the image from the correct URL
+2. Rename it to `missing-person.jpg`
+3. Replace this file in `public/images/missing-person.jpg`
+
+### Option 2: Using Command Line
+```bash
+# If you have a working URL:
+curl -o public/images/missing-person.jpg "YOUR_IMAGE_URL"
+```
+
+### Option 3: From Google Drive
+1. Open the Google Drive/Photos share link in a browser
+2. Download the image
+3. Move it to `public/images/missing-person.jpg`
+
+## After Replacing
+Once you've added the real image:
+1. Test the website locally: `npm run dev`
+2. Verify the image displays correctly on the homepage
+3. Check that it's the right aspect ratio (portrait recommended)
+4. Commit and deploy the changes

@@ -1,0 +1,50 @@
+# Social Media Preview Image (Open Graph Image)
+
+**IMPORTANT:** This is the image that appears when your website is shared on social media (Facebook, Twitter, LinkedIn, etc.).
+
+## Image Requirements
+- **Format:** JPG or PNG
+- **Recommended Size:** 1200x630 pixels (Facebook/Twitter standard)
+- **Aspect Ratio:** 1.91:1 (landscape orientation)
+- **File Size:** Keep under 1MB
+- **Content:** Should include:
+  - Photo of the missing person
+  - Text: "MISSING" or "HELP FIND [NAME]"
+  - Contact phone number
+  - Website URL (optional)
+
+## How to Create
+
+### Option 1: Use a Design Tool
+Use Canva, Photoshop, or similar tools:
+1. Create a new design: 1200x630 pixels
+2. Add the missing person's photo
+3. Add bold text: "MISSING: KAIDENCE KOLLIER"
+4. Add contact number: 623-217-0545
+5. Add urgency: "Last seen: Azaq Creek area"
+6. Export as JPG/PNG
+7. Save as `public/images/og-image.jpg`
+
+### Option 2: Quick Template
+If you have the missing person photo:
+1. Use an online tool like Canva (free)
+2. Search for "Missing Person Poster" templates
+3. Customize with Kaidence's information
+4. Download as 1200x630 pixels
+5. Save as `og-image.jpg`
+
+### Option 3: Simple Text Image
+Even a simple image with text is better than nothing:
+- Background: White or bright color
+- Large text: "MISSING TEEN"
+- Name: "Kaidence Kollier"
+- Contact: "623-217-0545 or 911"
+
+## Why This Matters
+When people share your website on social media, this image will appear in the preview. A compelling image significantly increases click-through rates and helps spread awareness faster.
+
+## After Creating
+1. Replace this file with your og-image.jpg
+2. Test social sharing at: https://metatags.io
+3. Share on social media to verify it appears correctly
+4. Commit and deploy the changes

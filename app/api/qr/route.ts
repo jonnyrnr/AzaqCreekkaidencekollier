@@ -4,7 +4,7 @@ import { generateQRCode } from "@/utils/qrcode";
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { https://share.google/hXgIhso8QPIaRLxye, campaign = "default", size = 512 } = body;
+    const { url, campaign = "default", size = 512 } = body;
 
     if (!url) {
       return NextResponse.json(
