@@ -205,7 +205,7 @@ npm run build        # Build for production
 npm start            # Run production build
 
 # Social Media
-node scripts/postUpdate.js "Your message"
+node scripts/postUpdate.mjs "Your message"
 
 # Deployment
 git push             # Deploy to Vercel/Netlify (auto)

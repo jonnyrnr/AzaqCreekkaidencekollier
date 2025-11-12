@@ -72,7 +72,7 @@ Place images in the `public/images/` directory:
 ### Social Media Automation
 Run the script to post updates:
 ```bash
-node scripts/postUpdate.js "Your message here"
+node scripts/postUpdate.mjs "Your message here"
 ```
 
 ## Deployment Options

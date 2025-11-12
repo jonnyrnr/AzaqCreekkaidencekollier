@@ -91,7 +91,7 @@ See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed setup instructions.
 ### Social Media Automation
 Post updates via command line:
 ```bash
-node scripts/postUpdate.js "Help us find [Name]"
+node scripts/postUpdate.mjs "Help us find [Name]"
 ```
 
 ## 📱 SEO & Social Features
