@@ -21,9 +21,9 @@ export const siteConfig = {
 
   // Contact Information
   contact: {
-    phone: "1-800-XXX-XXXX", // Update with actual number
+    phone: "623-217-0545", // Updated with mom's number
     email: "tips@example.com", // Update with actual email
-    tipline: "1-800-XXX-XXXX", // Anonymous tip line
+    tipline: "911", // Emergency tip line
     policeContact: "Local Police Department: XXX-XXX-XXXX",
   },
 
