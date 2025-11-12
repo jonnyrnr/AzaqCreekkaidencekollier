@@ -3,6 +3,7 @@ import "./globals.css";
 import { siteConfig } from "@/config/siteConfig";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.site.url),
   title: siteConfig.site.title,
   description: siteConfig.site.description,
   keywords: siteConfig.keywords,
