@@ -55,7 +55,7 @@ export default function ContactPage() {
           message: data.error || "Something went wrong. Please try again.",
         });
       }
-    } catch (error) {
+    } catch {
       setStatus({
         type: "error",
         message: "Failed to submit. Please call us directly.",

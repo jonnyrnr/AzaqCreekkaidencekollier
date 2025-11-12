@@ -2,11 +2,11 @@
 
 /**
  * Example script to post updates to social media
- * Usage: node scripts/postUpdate.js "Your message here"
+ * Usage: node scripts/postUpdate.mjs "Your message here"
  */
 
-const { postToAllPlatforms } = require('./socialMedia');
-const { siteConfig } = require('../config/siteConfig');
+import { postToAllPlatforms } from './socialMedia.js';
+import { siteConfig } from '../config/siteConfig.js';
 
 async function main() {
   const message = process.argv[2] || `Help us find ${siteConfig.person.name}. Any information could be crucial.`;

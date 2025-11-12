@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { siteConfig } from "@/config/siteConfig";
 
 export default function QRPage() {
@@ -112,10 +113,13 @@ export default function QRPage() {
             {qrCode ? (
               <div className="space-y-4">
                 <div className="bg-white p-4 border-4 border-gray-800 rounded-lg">
-                  <img
+                  <Image
                     src={qrCode}
                     alt="QR Code"
+                    width={512}
+                    height={512}
                     className="w-full h-auto"
+                    unoptimized
                   />
                 </div>
                 <button

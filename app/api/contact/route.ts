@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import { siteConfig } from "@/config/siteConfig";
 
 // Generate a reference number for tracking
 function generateReferenceNumber(): string {
