@@ -9,9 +9,17 @@ export interface SocialPost {
 
 /**
  * Format hashtags for social media posts
+ * Internal helper function to ensure consistent hashtag formatting
  */
 function formatHashtags(hashtags?: string[]): string {
   return hashtags?.length ? hashtags.join(" ") : "";
+}
+
+/**
+ * Filter out empty or whitespace-only strings
+ */
+function filterNonEmpty(parts: string[]): string[] {
+  return parts.filter(part => part && part.trim());
 }
 
 /**
@@ -20,7 +28,7 @@ function formatHashtags(hashtags?: string[]): string {
 export function formatSocialMessage(post: SocialPost, defaultUrl?: string): string {
   const url = post.link || defaultUrl || siteConfig.site.url;
   const hashtags = formatHashtags(post.hashtags);
-  return [post.message, hashtags, url].filter(part => part && part.trim()).join("\n\n");
+  return filterNonEmpty([post.message, hashtags, url]).join("\n\n");
 }
 
 /**
@@ -44,5 +52,5 @@ export function formatSocialMessageWithLimit(
 export function formatInstagramCaption(post: SocialPost): string {
   const hashtags = formatHashtags(post.hashtags);
   const linkNote = `Link in bio: ${post.link || siteConfig.site.url}`;
-  return [post.message, hashtags, linkNote].filter(part => part && part.trim()).join("\n\n");
+  return filterNonEmpty([post.message, hashtags, linkNote]).join("\n\n");
 }
