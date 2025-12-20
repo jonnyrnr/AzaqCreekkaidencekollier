@@ -13,7 +13,7 @@ export interface SocialPost {
 export function formatSocialMessage(post: SocialPost, defaultUrl?: string): string {
   const url = post.link || defaultUrl || siteConfig.site.url;
   const hashtags = post.hashtags?.length ? post.hashtags.join(" ") : "";
-  return [post.message, hashtags, url].filter(part => part).join("\n\n");
+  return [post.message, hashtags, url].filter(part => part && part.trim()).join("\n\n");
 }
 
 /**
@@ -26,4 +26,13 @@ export function formatSocialMessageWithLimit(
 ): string {
   const message = formatSocialMessage(post, defaultUrl);
   return message.length > maxLength ? message.substring(0, maxLength - 3) + "..." : message;
+}
+
+/**
+ * Format Instagram caption (Instagram doesn't support clickable links in captions)
+ */
+export function formatInstagramCaption(post: SocialPost): string {
+  const hashtags = post.hashtags?.length ? post.hashtags.join(" ") : "";
+  const linkNote = `Link in bio: ${post.link || siteConfig.site.url}`;
+  return [post.message, hashtags, linkNote].filter(part => part && part.trim()).join("\n\n");
 }

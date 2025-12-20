@@ -6,7 +6,7 @@
  */
 
 import { siteConfig } from "@/config/siteConfig";
-import { formatSocialMessage, formatSocialMessageWithLimit, SocialPost } from "@/utils/socialMediaHelpers";
+import { formatSocialMessage, formatSocialMessageWithLimit, formatInstagramCaption, SocialPost } from "@/utils/socialMediaHelpers";
 
 /**
  * Facebook Auto-Posting
@@ -119,10 +119,8 @@ export async function postToInstagram(post: SocialPost) {
 
   try {
     // Step 1: Create media container
-    // Instagram doesn't support clickable links in captions, so we add a note
-    const hashtags = post.hashtags?.length ? post.hashtags.join(" ") : "";
-    const linkNote = `Link in bio: ${post.link || siteConfig.site.url}`;
-    const caption = [post.message, hashtags, linkNote].filter(part => part).join("\n\n");
+    // Instagram doesn't support clickable links in captions
+    const caption = formatInstagramCaption(post);
 
     const containerResponse = await fetch(
       `https://graph.facebook.com/v18.0/${accountId}/media`,
