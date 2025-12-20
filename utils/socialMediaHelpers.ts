@@ -12,8 +12,8 @@ export interface SocialPost {
  */
 export function formatSocialMessage(post: SocialPost, defaultUrl?: string): string {
   const url = post.link || defaultUrl || siteConfig.site.url;
-  const hashtags = post.hashtags?.join(" ") || "";
-  return [post.message, hashtags, url].filter(Boolean).join("\n\n");
+  const hashtags = post.hashtags?.length ? post.hashtags.join(" ") : "";
+  return [post.message, hashtags, url].filter(part => part).join("\n\n");
 }
 
 /**

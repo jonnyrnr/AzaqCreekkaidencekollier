@@ -119,8 +119,10 @@ export async function postToInstagram(post: SocialPost) {
 
   try {
     // Step 1: Create media container
-    const linkText = `Link in bio: ${post.link || siteConfig.site.url}`;
-    const caption = formatSocialMessage(post, linkText);
+    // Instagram doesn't support clickable links in captions, so we add a note
+    const hashtags = post.hashtags?.length ? post.hashtags.join(" ") : "";
+    const linkNote = `Link in bio: ${post.link || siteConfig.site.url}`;
+    const caption = [post.message, hashtags, linkNote].filter(part => part).join("\n\n");
 
     const containerResponse = await fetch(
       `https://graph.facebook.com/v18.0/${accountId}/media`,
