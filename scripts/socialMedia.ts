@@ -6,14 +6,7 @@
  */
 
 import { siteConfig } from "@/config/siteConfig";
-import { formatSocialMessage, formatSocialMessageWithLimit } from "@/utils/socialMediaHelpers";
-
-export interface SocialPost {
-  message: string;
-  image?: string;
-  link?: string;
-  hashtags?: string[];
-}
+import { formatSocialMessage, formatSocialMessageWithLimit, SocialPost } from "@/utils/socialMediaHelpers";
 
 /**
  * Facebook Auto-Posting
