@@ -126,7 +126,8 @@ export async function postToInstagram(post: SocialPost) {
 
   try {
     // Step 1: Create media container
-    const caption = formatSocialMessage(post, `Link in bio: ${post.link || siteConfig.site.url}`);
+    const linkText = `Link in bio: ${post.link || siteConfig.site.url}`;
+    const caption = formatSocialMessage(post, linkText);
 
     const containerResponse = await fetch(
       `https://graph.facebook.com/v18.0/${accountId}/media`,
