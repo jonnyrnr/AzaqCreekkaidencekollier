@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { siteConfig } from "@/config/siteConfig";
+import { ContactInfo } from "@/components/ContactInfo";
 
 export default function Home() {
   return (
@@ -50,21 +51,7 @@ export default function Home() {
           <h2 className="text-2xl font-bold text-center mb-4">
             HAVE YOU SEEN {siteConfig.person.name.split(' ')[0].toUpperCase()}?
           </h2>
-          <div className="space-y-3 text-center">
-            <p className="text-lg font-semibold">If you have any information, please contact:</p>
-            <p className="text-2xl font-bold text-blue-600">
-              📞 {siteConfig.contact.phone}
-            </p>
-            <p className="text-lg">
-              📧 {siteConfig.contact.email}
-            </p>
-            <p className="text-lg">
-              🔒 Anonymous Tip Line: {siteConfig.contact.tipline}
-            </p>
-            <p className="text-sm text-gray-600 mt-4">
-              {siteConfig.contact.policeContact}
-            </p>
-          </div>
+          <ContactInfo variant="full" />
         </div>
 
         {/* Contact Form Button */}

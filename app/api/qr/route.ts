@@ -1,5 +1,6 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
 import { generateQRCode } from "@/utils/qrcode";
+import { createErrorResponse, createSuccessResponse } from "@/utils/api";
 
 export async function POST(request: NextRequest) {
   try {
@@ -7,10 +8,7 @@ export async function POST(request: NextRequest) {
     const { url, campaign = "default", size = 512 } = body;
 
     if (!url) {
-      return NextResponse.json(
-        { error: "URL is required" },
-        { status: 400 }
-      );
+      return createErrorResponse("URL is required");
     }
 
     const qrCode = await generateQRCode({
@@ -20,16 +18,9 @@ export async function POST(request: NextRequest) {
       errorCorrectionLevel: "H",
     });
 
-    return NextResponse.json({
-      qrCode,
-      campaign,
-      success: true,
-    });
+    return createSuccessResponse({ qrCode, campaign });
   } catch (error) {
     console.error("Error generating QR code:", error);
-    return NextResponse.json(
-      { error: "Failed to generate QR code" },
-      { status: 500 }
-    );
+    return createErrorResponse("Failed to generate QR code", 500);
   }
 }

@@ -6,6 +6,7 @@
  */
 
 import { siteConfig } from "@/config/siteConfig";
+import { formatSocialMessage, formatSocialMessageWithLimit } from "@/utils/socialMediaHelpers";
 
 export interface SocialPost {
   message: string;
@@ -29,7 +30,7 @@ export async function postToFacebook(post: SocialPost) {
   }
 
   try {
-    const message = `${post.message}\n\n${post.hashtags?.join(" ") || ""}\n\n${post.link || siteConfig.site.url}`;
+    const message = formatSocialMessage(post);
 
     const response = await fetch(
       `https://graph.facebook.com/v18.0/${pageId}/feed`,
@@ -76,8 +77,7 @@ export async function postToTwitter(post: SocialPost) {
 
   try {
     // Twitter/X has a 280 character limit
-    const message = `${post.message}\n\n${post.hashtags?.join(" ") || ""}\n\n${post.link || siteConfig.site.url}`;
-    const truncatedMessage = message.length > 280 ? message.substring(0, 277) + "..." : message;
+    const truncatedMessage = formatSocialMessageWithLimit(post, 280);
 
     const response = await fetch("https://api.twitter.com/2/tweets", {
       method: "POST",
@@ -126,7 +126,7 @@ export async function postToInstagram(post: SocialPost) {
 
   try {
     // Step 1: Create media container
-    const caption = `${post.message}\n\n${post.hashtags?.join(" ") || ""}\n\nLink in bio: ${post.link || siteConfig.site.url}`;
+    const caption = formatSocialMessage(post, `Link in bio: ${post.link || siteConfig.site.url}`);
 
     const containerResponse = await fetch(
       `https://graph.facebook.com/v18.0/${accountId}/media`,

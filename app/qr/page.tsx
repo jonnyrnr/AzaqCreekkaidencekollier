@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { siteConfig } from "@/config/siteConfig";
+import { BackNav } from "@/components/BackNav";
 
 export default function QRPage() {
   const [selectedCampaign, setSelectedCampaign] = useState("poster");
@@ -54,11 +55,7 @@ export default function QRPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-50 to-white">
-      <div className="bg-purple-600 text-white py-3 px-4 text-center">
-        <Link href="/" className="hover:underline">
-          ← Back to Main Page
-        </Link>
-      </div>
+      <BackNav bgColor="bg-purple-600" />
 
       <main className="container mx-auto px-4 py-8 max-w-4xl">
         <h1 className="text-4xl font-bold text-gray-900 mb-4 text-center">
