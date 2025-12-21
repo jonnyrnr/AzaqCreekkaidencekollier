@@ -40,6 +40,9 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 │   ├── contact/           # Contact form page
 │   ├── qr/                # QR code generator
 │   └── api/               # API routes
+│       ├── contact/       # Tip submission endpoint
+│       ├── qr/            # QR code generation endpoint
+│       └── profile/       # Profile data endpoint
 ├── components/            # Reusable React components
 ├── config/                # Site configuration
 │   └── siteConfig.ts      # Missing person info, contacts
@@ -92,6 +95,23 @@ See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed setup instructions.
 Post updates via command line:
 ```bash
 node scripts/postUpdate.mjs "Help us find [Name]"
+```
+
+### Profile API (/api/profile)
+- GET endpoint to retrieve missing person profile data
+- Returns JSON with person details, contact info, and social media links
+- Useful for external integrations and third-party applications
+- Example response:
+```json
+{
+  "success": true,
+  "data": {
+    "person": { "name": "...", "age": "...", ... },
+    "contact": { "phone": "...", "email": "...", ... },
+    "social": { "facebook": "...", "twitter": "...", ... },
+    "site": { "title": "...", "description": "...", ... }
+  }
+}
 ```
 
 ## 📱 SEO & Social Features
