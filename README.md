@@ -106,10 +106,33 @@ node scripts/postUpdate.mjs "Help us find [Name]"
 {
   "success": true,
   "data": {
-    "person": { "name": "...", "age": "...", ... },
-    "contact": { "phone": "...", "email": "...", ... },
-    "social": { "facebook": "...", "twitter": "...", ... },
-    "site": { "title": "...", "description": "...", ... }
+    "person": {
+      "name": "Kaidence Kollier",
+      "age": "Teen",
+      "lastSeen": {
+        "location": "Azaq Creek area",
+        "date": "2025-11-12"
+      },
+      "description": "[physical description]",
+      "photo": "/images/missing-person.jpg"
+    },
+    "contact": {
+      "phone": "623-217-0545",
+      "email": "tips@example.com",
+      "tipline": "911",
+      "policeContact": "Local Police Department: XXX-XXX-XXXX"
+    },
+    "social": {
+      "facebook": "https://facebook.com/helpfindkaidence",
+      "twitter": "https://twitter.com/findkaidence",
+      "instagram": "https://instagram.com/findkaidence",
+      "hashtags": ["#FindKaidenceKollier", "#MissingTeen", "#AzaqCreek"]
+    },
+    "site": {
+      "title": "Help Find Kaidence Kollier - Missing Teen",
+      "description": "[site description]",
+      "url": "https://azaqcreek-missing.com"
+    }
   }
 }
 ```

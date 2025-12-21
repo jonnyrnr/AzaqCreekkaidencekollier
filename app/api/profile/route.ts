@@ -7,9 +7,11 @@ export const dynamic = "force-static";
 
 export async function GET() {
   try {
-    // Return the missing person's profile information
     // Destructure siteConfig for cleaner code
     const { person, contact, social, site } = siteConfig;
+    
+    // Return the missing person's profile information
+    // Note: site.image is excluded as it's primarily for social media meta tags
     const profile = {
       person,
       contact,
