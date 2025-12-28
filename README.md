@@ -40,6 +40,9 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 │   ├── contact/           # Contact form page
 │   ├── qr/                # QR code generator
 │   └── api/               # API routes
+│       ├── contact/       # Tip submission endpoint
+│       ├── qr/            # QR code generation endpoint
+│       └── profile/       # Profile data endpoint
 ├── components/            # Reusable React components
 ├── config/                # Site configuration
 │   └── siteConfig.ts      # Missing person info, contacts
@@ -92,6 +95,46 @@ See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed setup instructions.
 Post updates via command line:
 ```bash
 node scripts/postUpdate.mjs "Help us find [Name]"
+```
+
+### Profile API (/api/profile)
+- GET endpoint to retrieve missing person profile data
+- Returns JSON with person details, contact info, and social media links
+- Useful for external integrations and third-party applications
+- Example response:
+```json
+{
+  "success": true,
+  "data": {
+    "person": {
+      "name": "Kaidence Kollier",
+      "age": "Teen",
+      "lastSeen": {
+        "location": "Azaq Creek area",
+        "date": "2025-11-12"
+      },
+      "description": "[physical description]",
+      "photo": "/images/missing-person.jpg"
+    },
+    "contact": {
+      "phone": "623-217-0545",
+      "email": "tips@example.com",
+      "tipline": "911",
+      "policeContact": "Local Police Department: XXX-XXX-XXXX"
+    },
+    "social": {
+      "facebook": "https://facebook.com/helpfindkaidence",
+      "twitter": "https://twitter.com/findkaidence",
+      "instagram": "https://instagram.com/findkaidence",
+      "hashtags": ["#FindKaidenceKollier", "#MissingTeen", "#AzaqCreek"]
+    },
+    "site": {
+      "title": "Help Find Kaidence Kollier - Missing Teen",
+      "description": "[site description]",
+      "url": "https://azaqcreek-missing.com"
+    }
+  }
+}
 ```
 
 ## 📱 SEO & Social Features
