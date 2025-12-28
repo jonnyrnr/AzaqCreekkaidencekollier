@@ -15,7 +15,7 @@ export const siteConfig = {
   site: {
     title: "Help Find Kaidence Kollier - Missing Teen",
     description: "Kaidence Kollier, a teen, went missing in the Azaq Creek area. If you have any information, please contact us immediately.",
-    url: "https://azaqcreek-missing.com", // Update with actual URL
+    url: "https://reimaginemedia-vzywhgso.manus.space",
     image: "/images/og-image.jpg", // Social media share image
   },
 
