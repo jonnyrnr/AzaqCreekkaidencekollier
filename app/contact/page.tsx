@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import { siteConfig } from "@/config/siteConfig";
+import { BackNav } from "@/components/BackNav";
+import { ContactInfo } from "@/components/ContactInfo";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -75,11 +77,7 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
-      <div className="bg-blue-600 text-white py-3 px-4 text-center">
-        <Link href="/" className="hover:underline">
-          ← Back to Main Page
-        </Link>
-      </div>
+      <BackNav bgColor="bg-blue-600" />
 
       <main className="container mx-auto px-4 py-8 max-w-2xl">
         <h1 className="text-4xl font-bold text-gray-900 mb-4 text-center">
@@ -242,12 +240,7 @@ export default function ContactPage() {
         {/* Alternative Contact Methods */}
         <div className="mt-8 bg-gray-50 rounded-lg p-6">
           <h2 className="text-xl font-bold mb-4">Other Ways to Contact Us</h2>
-          <div className="space-y-2 text-gray-700">
-            <p>📞 Phone: {siteConfig.contact.phone}</p>
-            <p>📧 Email: {siteConfig.contact.email}</p>
-            <p>🔒 Anonymous Tip Line: {siteConfig.contact.tipline}</p>
-            <p className="pt-2 text-sm">{siteConfig.contact.policeContact}</p>
-          </div>
+          <ContactInfo variant="compact" />
         </div>
       </main>
     </div>

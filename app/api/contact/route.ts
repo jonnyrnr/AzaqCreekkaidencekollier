@@ -1,11 +1,5 @@
-import { NextRequest, NextResponse } from "next/server";
-
-// Generate a reference number for tracking
-function generateReferenceNumber(): string {
-  const timestamp = Date.now().toString(36);
-  const random = Math.random().toString(36).substring(2, 7);
-  return `TIP-${timestamp}-${random}`.toUpperCase();
-}
+import { NextRequest } from "next/server";
+import { createErrorResponse, createSuccessResponse, generateReferenceNumber } from "@/utils/api";
 
 export async function POST(request: NextRequest) {
   try {
@@ -14,13 +8,10 @@ export async function POST(request: NextRequest) {
 
     // Validation
     if (!location || !message) {
-      return NextResponse.json(
-        { error: "Location and details are required" },
-        { status: 400 }
-      );
+      return createErrorResponse("Location and details are required");
     }
 
-    const referenceNumber = generateReferenceNumber();
+    const referenceNumber = generateReferenceNumber("TIP");
     const timestamp = new Date().toISOString();
 
     // Prepare tip data
@@ -63,16 +54,12 @@ export async function POST(request: NextRequest) {
     });
     */
 
-    return NextResponse.json({
-      success: true,
+    return createSuccessResponse({
       referenceNumber,
       message: "Tip received successfully",
     });
   } catch (error) {
     console.error("Error processing tip:", error);
-    return NextResponse.json(
-      { error: "Failed to process tip" },
-      { status: 500 }
-    );
+    return createErrorResponse("Failed to process tip", 500);
   }
 }

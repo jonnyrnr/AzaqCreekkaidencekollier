@@ -7,7 +7,8 @@ export interface QRCodeOptions {
   errorCorrectionLevel?: "L" | "M" | "Q" | "H";
 }
 
-export async function generateQRCode(options: QRCodeOptions): Promise<string> {
+// Helper function to build tracking URL and common options
+function buildQRCodeConfig(options: QRCodeOptions) {
   const {
     url,
     campaign = "default",
@@ -15,21 +16,25 @@ export async function generateQRCode(options: QRCodeOptions): Promise<string> {
     errorCorrectionLevel = "H", // High error correction for damaged posters
   } = options;
 
-  // Add tracking parameter to URL
   const trackingUrl = `${url}?ref=qr&campaign=${encodeURIComponent(campaign)}`;
 
-  try {
-    // Generate QR code as data URL
-    const qrDataUrl = await QRCode.toDataURL(trackingUrl, {
-      width: size,
-      margin: 2,
-      errorCorrectionLevel,
-      color: {
-        dark: "#000000",
-        light: "#FFFFFF",
-      },
-    });
+  const qrOptions = {
+    width: size,
+    margin: 2,
+    errorCorrectionLevel,
+    color: {
+      dark: "#000000",
+      light: "#FFFFFF",
+    },
+  };
 
+  return { trackingUrl, qrOptions };
+}
+
+export async function generateQRCode(options: QRCodeOptions): Promise<string> {
+  try {
+    const { trackingUrl, qrOptions } = buildQRCodeConfig(options);
+    const qrDataUrl = await QRCode.toDataURL(trackingUrl, qrOptions);
     return qrDataUrl;
   } catch (error) {
     console.error("Error generating QR code:", error);
@@ -40,26 +45,9 @@ export async function generateQRCode(options: QRCodeOptions): Promise<string> {
 export async function generateQRCodeBuffer(
   options: QRCodeOptions
 ): Promise<Buffer> {
-  const {
-    url,
-    campaign = "default",
-    size = 512,
-    errorCorrectionLevel = "H",
-  } = options;
-
-  const trackingUrl = `${url}?ref=qr&campaign=${encodeURIComponent(campaign)}`;
-
   try {
-    const buffer = await QRCode.toBuffer(trackingUrl, {
-      width: size,
-      margin: 2,
-      errorCorrectionLevel,
-      color: {
-        dark: "#000000",
-        light: "#FFFFFF",
-      },
-    });
-
+    const { trackingUrl, qrOptions } = buildQRCodeConfig(options);
+    const buffer = await QRCode.toBuffer(trackingUrl, qrOptions);
     return buffer;
   } catch (error) {
     console.error("Error generating QR code buffer:", error);
